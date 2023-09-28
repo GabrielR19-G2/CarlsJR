@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "Manchis5",
+    "database": "CarlsJr",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "Manchis5",
+    "database": "CarlsJr",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "Manchis5",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
