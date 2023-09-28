@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       ProductoPedido.belongsTo(models.Productos,{foreignKey:'idProducto'})
     }
   }
-  Producto_Pedido.init({
+  ProductoPedido.init({
     idProducto: DataTypes.INTEGER,
     idPedido: DataTypes.INTEGER,
     cantidad: DataTypes.INTEGER,
@@ -26,5 +26,5 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'ProductoPedido',
   });
-  return Producto_Pedido;
+  return ProductoPedido;
 };
