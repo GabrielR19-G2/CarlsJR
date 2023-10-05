@@ -43,7 +43,7 @@ class PagoDAO {
                 throw new Error('Pago no encontrado');
             }
             await pagoEliminar.destroy();
-            return 'Pago eliminado con exito';
+            return 'Pago eliminado con éxito';
         }
         catch (err) {
             throw err;
@@ -57,7 +57,7 @@ class PagoDAO {
                 throw new Error('Pago no encontrado');
             }
             await pagoActualizar.update({ id, subtotal, metodopago}, { where: { id } });
-            return 'Pago actualizado con exito';
+            return 'Pago actualizado con éxito';
         }
         catch (err) {
             throw err;
