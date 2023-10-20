@@ -1,23 +1,24 @@
-const { pedidoProducto } = require('../models/PedidoProducto');
+const { PedidoProducto } = require('../models/');
 
 
 class PedidoDAO {
     constructor() { };
     // CRUD Aplicación
 
-    async crearPedidoProducto(idPedido, idProducto, cantidad, instrucciones, importe) {
+    async crearPedidoProducto(idpedido, idproducto, cantidad, instrucciones, importe) {
         try {
-            const PedidoProducto = await pedidoProducto.create({ idPedido, idProducto, cantidad, instrucciones, importe });
-            return PedidoProducto;
+            const pedidoProducto = await PedidoProducto.create({ idpedido, idproducto, cantidad, instrucciones, importe });
+            return pedidoProducto;
         }
         catch (err) {
             console.log('Error: ', err)
         }
     }
+
     async obtenerPedidosProducto() {
         try {
-            const pedidos = await Pedido.findAll();
-            return pedidos;
+            const pedidosProductos = await PedidoProducto.findAll();
+            return pedidosProductos;
         }
         catch (err) {
             console.log('', err)
@@ -25,8 +26,8 @@ class PedidoDAO {
     }
     async obtenerPedidosProductoPorId(id) {
         try {
-            const PedidoProducto = await pedidoProducto.findByPk(id);
-            return PedidoProducto;
+            const pedidoProducto = await PedidoProducto.findByPk(id);
+            return pedidoProducto;
         }
         catch (err) {
             console.log('', err)
@@ -35,7 +36,7 @@ class PedidoDAO {
 
     async eliminarPedidoProducto(id) {
         try {
-            const pedidoProductoElminar = await Producto.findByPk(id);
+            const pedidoProductoElminar = await PedidoProducto.findByPk(id);
             if (!pedidoProductoElminar) {
                 throw new Error('Producto Pedido no encontrado')
             }

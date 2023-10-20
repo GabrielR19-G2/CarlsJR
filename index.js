@@ -3,6 +3,9 @@ const UsuarioDAO = require('./dataAccess/usuarioDAO');
 const AdministradorDAO = require('./dataAccess/administradorDAO');
 const ClienteDAO = require('./dataAccess/clienteDAO');
 const ProductoDAO = require("./dataAccess/productoDAO");
+const PagoDAO = require("./dataAccess/pagoDAO");
+const PedidoDAO = require("./dataAccess/pedidoDAO");
+const PedidoProductoDAO = require("./dataAccess/pedidoProductosDAO");
 
 async function main() {
     try {
@@ -70,6 +73,22 @@ async function main() {
 
         // const productoEliminar = await ProductoDAO.eliminarProducto('1');
         // console.log(productoEliminar);
+
+
+        // const nuevoPago = await PagoDAO.crearPago(350, 'Efectivo');
+        // console.log('Pago creado:', nuevoPago);
+
+        // const pagos = await PagoDAO.obtenerPago();
+        // console.log('Pagos: ', pagos);
+
+        // const nuevoPedido = await PedidoDAO.crearPedido(1, 230, '09/10/23', 1);
+        // console.log('Pedido: ', nuevoPedido);
+
+        // const nuevoPedidoProducto = await PedidoProductoDAO.crearPedidoProducto(1, 3, 1, 'Ninguna', 110);
+        // console.log('PedidoProducto: ', nuevoPedidoProducto);
+
+        const productosPedido = await PedidoProductoDAO.obtenerPedidosProducto();
+        console.log('ProductosPedido: ', productosPedido);
 
     } catch (error) {
         console.log("Error: ", error);

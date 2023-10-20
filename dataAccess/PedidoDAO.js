@@ -1,13 +1,13 @@
-const { Pedido } = require('../models/Pedido');
+const { Pedido } = require('../models');
 
 
 class PedidoDAO {
     constructor() { };
     // CRUD Aplicación
 
-    async crearPedido(idcliente, total, fecha, idPago) {
+    async crearPedido(idcliente, total, fecha, idpago) {
         try {
-            const pedido = await Pedido.create({ idcliente, total, fecha, idPago });
+            const pedido = await Pedido.create({ idcliente, total, fecha, idpago });
             return pedido;
         }
         catch (err) {
