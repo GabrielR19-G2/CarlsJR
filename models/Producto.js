@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // Relacion uno a muchos con la tabla PedidoProducto
-      Producto.hasMany(models.PedidoProducto, { foreignKey: 'idproducto' })
+      // define association here
+      Producto.hasMany(models.Producto_pedido,{foreignKey:'idProducto'})
 
     }
   }
@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     nombre: DataTypes.STRING,
     descripcion: DataTypes.STRING,
     precio: DataTypes.DECIMAL,
+    imagen: DataTypes.STRING,
     categoria: DataTypes.STRING
   }, {
     sequelize,
