@@ -5,7 +5,7 @@ class PagoDAO {
 
     async crearPago(subtotal, metodopago) {
         try {
-            const pagoNuevo = await Pago.create({subtotal, metodopago});
+            const pagoNuevo = await Pago.create(subtotal, metodopago);
             return pagoNuevo;
         }
         catch (err) {

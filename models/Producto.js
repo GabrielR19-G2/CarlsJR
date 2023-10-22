@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Producto.hasMany(models.Producto_pedido,{foreignKey:'idProducto'})
+      Producto.hasMany(models.PedidoProducto,{foreignKey:'idProducto'})
 
     }
   }
