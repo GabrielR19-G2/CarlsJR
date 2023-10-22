@@ -5,7 +5,7 @@ class ProductoDAO {
 
     async crearProducto(nombre, descripcion, precio, categoria) {
         try {
-            const productoNuevo = await Producto.create({nombre, descripcion, precio, categoria});
+            const productoNuevo = await Producto.create({ nombre, descripcion, precio, imagen, categoria });
             return productoNuevo;
         }
         catch (err) {
@@ -50,13 +50,13 @@ class ProductoDAO {
         }
     }
 
-    async actualizarProducto(id, nombre, descripcion, precio, categoria) {
+    async actualizarProducto(id, nombre, descripcion, precio, imagen, categoria) {
         try {
             const productoActualizar = await Producto.findByPk(id);
             if (!productoActualizar) {
                 throw new Error('Producto no encontrado');
             }
-            await productoActualizar.update({ nombre, descripcion, precio, categoria}, { where: { id } });
+            await productoActualizar.update({ nombre, descripcion, precio, imagen, categoria }, { where: { id } });
             return 'Producto actualizado con exito';
         }
         catch (err) {
