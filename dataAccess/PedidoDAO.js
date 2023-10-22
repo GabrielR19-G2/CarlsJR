@@ -7,7 +7,7 @@ class PedidoDAO {
 
     async crearPedido(idcliente, total, fecha, idpago) {
         try {
-            const pedido = await Pedido.create({ idcliente, total, fecha, idpago });
+            const pedido = await Pedido.create( idcliente, total, fecha, idpago );
             return pedido;
         }
         catch (err) {
@@ -25,7 +25,7 @@ class PedidoDAO {
     }
     async obtenerPedidosPorId(id) {
         try {
-            const pedidos = await Pedidos.findByPk(id);
+            const pedidos = await Pedido.findByPk(id);
             return pedidos;
         }
         catch (err) {
@@ -35,7 +35,7 @@ class PedidoDAO {
 
     async eliminarPedido(id) {
         try {
-            const pedidoElminar = await Producto.findByPk(id);
+            const pedidoElminar = await Pedido.findByPk(id);
             if (!pedidoElminar) {
                 throw new Error('Pedido no encontrado')
             }
@@ -47,7 +47,7 @@ class PedidoDAO {
         }
     }
 
-    async actualizarProducto(id, idcliente, total, fecha, idPago) {
+    async actualizarPedido(id, idcliente, total, fecha, idPago) {
         try {
             const pedidoActualizar = await Pedido.findByPk(id);
             if (!pedidoActualizar) {
