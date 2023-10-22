@@ -3,9 +3,10 @@ const { Usuario } = require('../models/');
 class UsuarioDAO {
     constructor() { };
 
-    async crearUsuario(usuario, contraseña) {
+    async crearUsuario(Nombre, contraseña) {
         try {
-            const usuarioNuevo = await Usuario.create({usuario, contraseña});
+            //No es nombre, contraseña?
+            const usuarioNuevo = await Usuario.create({Nombre, contraseña});
             return usuarioNuevo;
         }
         catch (err) {

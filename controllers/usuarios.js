@@ -1,5 +1,7 @@
 //Manejo de errores
 const { AppError } = require("../utils/appError")
+const Usuario = require("../models/Usuario")
+const { UsuarioDAO } = require("../dataAccess/UsuarioDAO")
 //Arreglo donde se realizaran ABC de usuarios
 const usuarios = []
 
@@ -10,18 +12,21 @@ const getUsuarios = (request, response) => {
     response.status(200).json(usuarios)
 }
 const addUsuario = (req, res) => {
-    const { nombre, contraseña } = req.body
+    const { Nombre, contraseña } = req.body
 
-    if (!nombre || !contraseña) {
+    if (!Nombre || !contraseña) {
         throw new AppError('¡Faltan campos obligatorios!', 500)
     }
 
     const usuarioNuevo = {
-        nombre: nombre,
+        Nombre: Nombre,
         contraseña: contraseña
     }
     usuarios.push(usuarioNuevo)
     res.status(200).json(usuarioNuevo)
+    // async crearUsuario(Nombre, contraseña) {
+    // const usuarioNuevo = new Usuario(0, req.body.Nombre, req.body.contraseña)
+    // const usuarioDAO = new UsuarioDAO()
 }
 //elimina por id
 const deleteUser = (req, res) => {
@@ -34,9 +39,9 @@ const deleteUser = (req, res) => {
     }
 }
 
-const updateUser = (req,res)=>{
+const updateUser = (req, res) => {
     // const 
-    
+
 }
 
 module.exports = {
