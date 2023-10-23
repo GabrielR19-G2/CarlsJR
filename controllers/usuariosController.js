@@ -61,17 +61,18 @@ class usuarioController {
         }
     }
 
-    static async updateUser(req, res) {
+    static async updateUser(req, res, next) {
         try {
             const id = req.params.id
             const usuarioData = req.body;
             const usuario = await UsuarioDAO.actualizarUsuario(id, usuarioData)
             if (!usuario) {
-                next(new AppError('No se encontró el usuario', 500))
+                res.status(404).json({ message: 'No se encontró el usuario' });
+                return;
             }
-            res.status(200).json(usuario)
+            res.status(200).json(usuario);
         } catch (error) {
-            next(new AppError('Error al actualizar el usuario', 500))
+            next(new AppError('Error al actualizar el usuario', 500));
         }
     }
 }

@@ -1,5 +1,4 @@
 const { sequelize } = require("./models");
-const UsuarioDAO = require('./dataAccess/usuarioDAO');
 const AdministradorDAO = require('./dataAccess/administradorDAO');
 const ClienteDAO = require('./dataAccess/clienteDAO');
 const ProductoDAO = require("./dataAccess/productoDAO");

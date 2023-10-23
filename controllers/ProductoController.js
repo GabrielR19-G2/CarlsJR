@@ -63,7 +63,7 @@ class productoController {
         }
     }
 
-    static async updateProduct(req, res) {
+    static async updateProduct(req, res, next) {
         try {
             const id = req.params.id
             const productoData = req.body;

@@ -1,23 +1,15 @@
-'use strict';
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Cliente extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // Relacion uno a uno con la tabla Usuario
-      Cliente.belongsTo(models.Usuario, { foreignKey: 'idusuario' })
-
-      // Relacion uno a muchos con la tabla Pedidos
-      Cliente.hasMany(models.Pedido, { foreignKey: 'idcliente' })
-
+      Cliente.belongsTo(models.Usuario, { foreignKey: 'idusuario' });
+      Cliente.hasMany(models.Pedido, { foreignKey: 'idcliente' });
     }
   }
+
   Cliente.init({
     idusuario: DataTypes.INTEGER,
     nombre: DataTypes.STRING,
@@ -25,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Cliente',
+    timestamps: false,  // Agregar esta línea para habilitar las marcas de tiempo
+    updatedAt: false    // Opcional: si no necesitas updatedAt, puedes deshabilitarlo
   });
+
   return Cliente;
 };
