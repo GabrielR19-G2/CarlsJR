@@ -4,7 +4,7 @@ const usuariosController = require('../controllers/usuariosController')
 
 //obtener usuarios
 router.get('/', usuariosController.getUsuarios)
-router.get('/:id', usuariosController.getUsuariosPorId)
+router.get('/:id', usuariosController.getUsuarioPorId)
 
 //agregar usuarios
 router.post('/', usuariosController.addUsuario)

@@ -14,3 +14,11 @@
 {"level":"error","message":"No se logró obtener el pedido"}
 {"level":"error","message":"No se logró obtener el pedido"}
 {"level":"error","message":"Error al eliminar pago"}
+{"level":"error","message":"Error al crear usuario"}
+{"level":"error","message":"Error al crear usuario"}
+{"level":"error","message":"Error al crear usuario"}
+{"level":"error","message":"Error al crear usuario"}
+{"level":"error","message":"Error al crear usuario"}
+{"level":"error","message":"Error al crear usuario"}
+{"level":"error","message":"Error al eliminar usuario"}
+{"level":"error","message":"Error al eliminar usuario"}
