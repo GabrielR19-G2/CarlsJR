@@ -22,3 +22,11 @@
 {"level":"error","message":"Error al crear usuario"}
 {"level":"error","message":"Error al eliminar usuario"}
 {"level":"error","message":"Error al eliminar usuario"}
+{"level":"error","message":"Los campos idcliente, total, fecha, idpago son obligatorios"}
+{"level":"error","message":"Ruta no encontrada o ha cambiado"}
+{"level":"error","message":"Ruta no encontrada o ha cambiado"}
+{"level":"error","message":"Error al crear el administrador"}
+{"level":"error","message":"Error al crear el administrador"}
+{"level":"error","message":"Error al eliminar cliente"}
+{"level":"error","message":"Error al eliminar cliente"}
+{"level":"error","message":"Error al eliminar cliente"}

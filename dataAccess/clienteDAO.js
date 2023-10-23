@@ -5,7 +5,7 @@ class ClienteDAO {
 
     async crearCliente(idusuario, nombre, telefono) {
         try {
-            const clienterNuevo = await Cliente.create({idusuario, nombre, telefono});
+            const clienterNuevo = await Cliente.create(idusuario, nombre, telefono);
             return clienterNuevo;
         }
         catch (err) {
