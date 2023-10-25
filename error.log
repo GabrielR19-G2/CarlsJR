@@ -30,3 +30,14 @@
 {"level":"error","message":"Error al eliminar cliente"}
 {"level":"error","message":"Error al eliminar cliente"}
 {"level":"error","message":"Error al eliminar cliente"}
+{"level":"error","message":"No se encontró el pedidoProducto"}
+{"level":"error","message":"No se encontró el pedidoProducto"}
+{"level":"error","message":"Error al crear producto!"}
+{"level":"error","message":"Error al crear producto!"}
+{"level":"error","message":"Error al crear producto!"}
+{"level":"error","message":"Error al crear producto!"}
+{"level":"error","message":"Error al obtener producto o producto inexistente"}
+{"level":"error","message":"Error al obtener producto o producto inexistente"}
+{"level":"error","message":"Error al obtener producto o producto inexistente"}
+{"level":"error","message":"Error al eliminar producto"}
+{"level":"error","message":"Error al eliminar producto"}

@@ -3,9 +3,9 @@ const { Producto } = require('../models/');
 class ProductoDAO {
     constructor() { };
 
-    async crearProducto(nombre, descripcion, precio, categoria) {
+    async crearProducto(nombre, descripcion, precio, imagen, categoria) {
         try {
-            const productoNuevo = await Producto.create({ nombre, descripcion, precio, imagen, categoria });
+            const productoNuevo = await Producto.create( nombre, descripcion, precio, imagen, categoria );
             return productoNuevo;
         }
         catch (err) {
