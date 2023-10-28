@@ -7,7 +7,7 @@ class PedidoDAO {
 
     async crearPedidoProducto(idpedido, idproducto, cantidad, instrucciones, importe) {
         try {
-            const pedidoProducto = await PedidoProducto.create({ idpedido, idproducto, cantidad, instrucciones, importe });
+            const pedidoProducto = await PedidoProducto.create( idpedido, idproducto, cantidad, instrucciones, importe );
             return pedidoProducto;
         }
         catch (err) {
