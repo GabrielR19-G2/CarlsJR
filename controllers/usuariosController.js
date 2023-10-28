@@ -1,6 +1,6 @@
 //Manejo de errores
 const { AppError } = require("../utils/appError")
-const { UsuarioDAO } = require("../dataAccess/UsuarioDAO")
+const UsuarioDAO = require("../dataAccess/usuarioDAO")
 
 
 // usuario: DataTypes.STRING,
@@ -9,15 +9,17 @@ class usuarioController {
 
     static async addUsuario(req, res, next) {
         try {
-            const { Nombre, contraseña } = req.body
+            const {usuario, contraseña} = req.body;
 
-            if (!Nombre || !contraseña) {
+            if (!usuario || !contraseña) {
                 throw new AppError('¡Faltan campos obligatorios!', 500)
             }
-            const usuarioData = { Nombre, contraseña }
-            const usuario = await UsuarioDAO.crearUsuario(usuarioData);
-            res.status(201).json(usuario)
+            const usuarioData = {usuario, contraseña};
+            console.log(usuarioData)
+            const usuarioAgregado = await UsuarioDAO.crearUsuario(usuarioData);
+            res.status(201).json(usuarioAgregado)
         } catch (err) {
+            console.log(err)
             next(new AppError('Error al crear usuario', 500))
         }
     }
@@ -48,7 +50,7 @@ class usuarioController {
     //elimina por id
     static async deleteUser(req, res, next) {
         try {
-            const id = req.params.index
+            const id = req.params.id
             const usuario = await UsuarioDAO.eliminarUsuario(id)
 
             if (!usuario) {
@@ -57,6 +59,7 @@ class usuarioController {
             res.status(200).json({message:'Usuario eliminado con éxito!'}) //regresa un json con los usuarios, menos el usuario eliminado
 
         } catch (error) {
+            console.log(error)
             next(new AppError('Error al eliminar usuario', 500))
         }
     }

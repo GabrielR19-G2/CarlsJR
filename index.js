@@ -10,8 +10,8 @@ async function main() {
     try {
         await sequelize.sync();
 
-        // const nuevoUsuario = await UsuarioDAO.crearUsuario('user2', 'dsfsf');
-        // console.log('Usuario creado:', nuevoUsuario);
+        const nuevoUsuario = await UsuarioDAO.crearUsuario('user2', 'dsfsf');
+        console.log('Usuario creado:', nuevoUsuario);
 
         // const usuarios = await UsuarioDAO.obtenerUsuarios();
         // console.log('Usuarios: ', usuarios);

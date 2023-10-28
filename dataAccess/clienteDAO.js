@@ -3,12 +3,23 @@ const { Cliente } = require('../models/');
 class ClienteDAO {
     constructor() { };
 
+<<<<<<< HEAD
 async crearCliente(nombre, telefono) {
     try {
         const clienterNuevo = await Cliente.create(nombre, telefono );
         return clienterNuevo;
     } catch (err) {
         throw err;
+=======
+    async crearCliente(idusuario, nombre, telefono) {
+        try {
+            const clienterNuevo = await Cliente.create(idusuario, nombre, telefono);
+            return clienterNuevo;
+        }
+        catch (err) {
+            throw err;
+        }
+>>>>>>> 65285be97f6d0e50fcb61ae84455b899444b9fa1
     }
 }
 

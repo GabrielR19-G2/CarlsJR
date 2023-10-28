@@ -5,7 +5,7 @@ class AdministradorDAO {
 
     async crearAdministrador(idusuario, nombre) {
         try {
-            const administradorNuevo = await Administrador.create({idusuario, nombre});
+            const administradorNuevo = await Administrador.create(idusuario, nombre);
             return administradorNuevo;
         }
         catch (err) {

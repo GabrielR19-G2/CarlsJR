@@ -1,13 +1,8 @@
 //Manejo de errores
 const { AppError } = require("../utils/appError")
-const { ProductoDAO } = require("../dataAccess/productoDAO")
-const Producto = require("../models/Producto")
+const  ProductoDAO  = require("../dataAccess/productoDAO")
 
-
-// nombre
-// descripcion
-//precio, imagen categoria
-class productoController {
+class ProductoController {
 
     static async addProduct(req, res, next) {
         try {
@@ -17,9 +12,10 @@ class productoController {
                 throw new AppError('¡Faltan campos obligatorios!', 500)
             }
             const productoData = { nombre, descripcion, precio, imagen, categoria }
-            const producto = await Producto.crearProducto(productoData);
+            const producto = await ProductoDAO.crearProducto(productoData);
             res.status(201).json(producto)
         } catch (err) {
+            console.log(err);
             next(new AppError('Error al crear producto!', 500))
         }
     }
@@ -37,12 +33,13 @@ class productoController {
     static async getProductoPorId(req, res, next) {
         try {
             const id = req.params.id
-            const producto = await ProductoDAO.obtenerUsuarioPorId(id)
+            const producto = await ProductoDAO.obtenerProductoPorId(id)
             if (!producto) {
                 next(new AppError('Producto no encontrado', 500))
             }
-            res.status(200).json(usuario)
+            res.status(200).json(producto)
         } catch (error) {
+            console.log(error);
             next(new AppError('Error al obtener producto o producto inexistente', 500))
         }
     }
@@ -59,6 +56,7 @@ class productoController {
             res.status(200).json({mesage:'Producto eliminado con éxito'}) //regresa un json con los usuarios, menos el usuario eliminado
 
         } catch (error) {
+            console.log(error);
             next(new AppError('Error al eliminar producto', 500))
         }
     }
@@ -78,4 +76,4 @@ class productoController {
     }
 }
 
-module.exports = productoController;
+module.exports = ProductoController;

@@ -18,6 +18,9 @@ module.exports = {
       precio: {
         type: Sequelize.DECIMAL
       },
+      imagen: {
+        type: Sequelize.STRING
+      },
       categoria: {
         type: Sequelize.STRING
       },
