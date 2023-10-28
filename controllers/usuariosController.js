@@ -64,23 +64,14 @@ class usuarioController {
         }
     }
 
-<<<<<<< HEAD
     static async updateUser(req, res, next) {
-=======
-    static async updateUser(req, res) {
-        verifyToken(req, res, next); // Verifica el token antes de continuar
->>>>>>> a30f8866b71db6ac86a6490a5e03f8710f75bb01
         try {
             const id = req.params.id;
             const usuarioData = req.body;
             const usuario = await UsuarioDAO.actualizarUsuario(id, usuarioData);
             if (!usuario) {
-<<<<<<< HEAD
                 res.status(404).json({ message: 'No se encontró el usuario' });
                 return;
-=======
-                next(new AppError('No se encontró el usuario', 500));
->>>>>>> a30f8866b71db6ac86a6490a5e03f8710f75bb01
             }
             res.status(200).json(usuario);
         } catch (error) {
