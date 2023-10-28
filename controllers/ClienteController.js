@@ -1,5 +1,6 @@
 const ClienteDAO = require('../dataAccess/clienteDAO');
 const { AppError } = require('../utils/appError');
+const { verifyToken } = require('../middleware/auth');
 
 class ClienteController {
   static async crearCliente(req, res, next) {
@@ -10,7 +11,7 @@ class ClienteController {
         next(new AppError('Los campos idusuario, nombre y telefono son obligatorios', 500));
       }
 
-      const clienteData = { idusuario, nombre, telefono};
+      const clienteData = { idusuario, nombre, telefono };
 
       const cliente = await ClienteDAO.crearCliente(clienteData);
       res.status(201).json(cliente);
@@ -50,10 +51,12 @@ class ClienteController {
 
   static async actualizarCliente(req, res, next) {
     try {
+      // Esta es la función que verificará el token JWT antes de permitir el acceso a la ruta.
+      verifyToken(req);
+
       const id = req.params.id;
       const { idusuario, nombre, telefono } = req.body;
-
-      const clienteData = {idusuario, nombre, telefono};
+      const clienteData = { idusuario, nombre, telefono };
 
       const cliente = await ClienteDAO.actualizarCliente(id, clienteData);
 
@@ -70,6 +73,9 @@ class ClienteController {
 
   static async eliminarCliente(req, res, next) {
     try {
+      // Esta es la función que verificará el token JWT antes de permitir el acceso a la ruta.
+      verifyToken(req);
+
       const id = req.params.id;
 
       const cliente = await ClienteDAO.eliminarCliente(id);
@@ -80,7 +86,7 @@ class ClienteController {
 
       res.status(200).json({ message: 'Cliente eliminado correctamente' });
     } catch (error) {
-        console.log(error);
+      console.log(error);
       next(new AppError('Error al eliminar cliente', 500));
     }
   }

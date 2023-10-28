@@ -1,17 +1,21 @@
-const express = require("express")
-const router = express.Router()
-const usuariosController = require('../controllers/usuariosController')
+const express = require("express");
+const router = express.Router();
+const usuariosController = require('../controllers/usuariosController');
+const authMiddleware = require('../middleware/auth'); // Importa tu middleware de autenticación
 
-//obtener usuarios
-router.get('/', usuariosController.getUsuarios)
-router.get('/:id', usuariosController.getUsuarioPorId)
+// Obtener usuarios (ruta pública)
+router.get('/', usuariosController.getUsuarios);
 
-//agregar usuarios
-router.post('/', usuariosController.addUsuario)
+// Obtener usuario por ID (ruta protegida)
+router.get('/:id', authMiddleware, usuariosController.getUsuarioPorId);
 
-router.put('/:id', usuariosController.updateUser)
-//obtener usuarios
-router.delete('/:id', usuariosController.deleteUser)
+// Agregar usuarios (ruta pública)
+router.post('/', usuariosController.addUsuario);
 
+// Actualizar usuario por ID (ruta protegida)
+router.put('/:id', authMiddleware, usuariosController.updateUser);
+
+// Eliminar usuario por ID (ruta protegida)
+router.delete('/:id', authMiddleware, usuariosController.deleteUser);
 
 module.exports = router;
