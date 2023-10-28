@@ -4,14 +4,7 @@ require('dotenv').config({ path: './variables.env' })
 const usuarioRoutes = require('./routes/usuarioRouter')
 const pagoRoutes = require('./routes/PagoRouter')
 const pedidoRoutes = require('./routes/PedidoRouter')
-<<<<<<< HEAD
 const clienteRoutes = require('./routes/ClienteRouter')
-=======
-const administradorRoutes = require('./routes/AdministradorRouter')
-const clienteRoutes = require('./routes/ClienteRouter')
-const productoRoutes = require('./routes/ProductoRouter')
-const pedidoProductoRoutes = require('./routes/PedidoProductoRouter')
->>>>>>> 65285be97f6d0e50fcb61ae84455b899444b9fa1
 const morgan = require('morgan')
 const { AppError, globalErrorHandler } = require("./utils/appError")
 app.use(express.json())
