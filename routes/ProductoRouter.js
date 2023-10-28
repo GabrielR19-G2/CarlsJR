@@ -1,17 +1,21 @@
-const express = require("express")
-const router = express.Router()
-const ProductoController = require('../controllers/ProductoController')
+const express = require("express");
+const router = express.Router();
+const productoController = require('../controllers/ProductoController');
+const authMiddleware = require('../middleware/auth'); // Importa tu middleware de autenticación
 
-//obtener productos
-router.get('/', ProductoController.getProductos)
-router.get('/:id', ProductoController.getProductoPorId)
+// Obtener productos (ruta pública)
+router.get('/', productoController.getProductos);
 
-//agregar productos
-router.post('/', ProductoController.addProduct)
+// Obtener producto por ID (ruta protegida)
+router.get('/:id', authMiddleware, productoController.getProductoPorId);
 
-router.put('/:id', ProductoController.updateProduct)
-//obtener productos
-router.delete('/:id', ProductoController.deleteProduct)
+// Agregar productos (ruta pública)
+router.post('/', productoController.addProduct);
 
+// Actualizar producto por ID (ruta protegida)
+router.put('/:id', authMiddleware, productoController.updateProduct);
+
+// Eliminar producto por ID (ruta protegida)
+router.delete('/:id', authMiddleware, productoController.deleteProduct);
 
 module.exports = router;

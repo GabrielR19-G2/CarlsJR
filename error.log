@@ -72,6 +72,8 @@
 {"level":"error","message":"Error al eliminar cliente"}
 {"level":"error","message":"Error al eliminar cliente"}
 {"level":"error","message":"Error al eliminar cliente"}
+{"level":"error","message":"Ruta no encontrada o ha cambiado"}
+{"level":"error","message":"Ruta no encontrada o ha cambiado"}
 {"level":"error","message":"No se encontró el pedidoProducto"}
 {"level":"error","message":"No se encontró el pedidoProducto"}
 {"level":"error","message":"Error al crear producto!"}
