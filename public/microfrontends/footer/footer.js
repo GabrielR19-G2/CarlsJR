@@ -17,8 +17,7 @@ export class FooterComponent extends HTMLElement {
     loadContent() {
         const footerContainer = document.getElementById('footer-container');
 
-        // Cargar el contenido del footer.html en el contenedor
-        fetch('microfrontends/footer/footer.html') // Ajusta la ruta según tu estructura
+        fetch('microfrontends/footer/footer.html') 
             .then(response => response.text())
             .then(html => {
                 this.innerHTML = html;
@@ -27,7 +26,6 @@ export class FooterComponent extends HTMLElement {
                 console.error('Error al cargar el contenido del footer:', error);
             });
 
-        // Puedes agregar aquí lógica adicional para el footer si es necesario
     }
 }
 
