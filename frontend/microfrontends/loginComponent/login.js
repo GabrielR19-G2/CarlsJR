@@ -4,7 +4,7 @@ export class LoginComponent extends HTMLElement {
     }
 
     connectedCallback() {
-        const shadow = this.attachShadow({mode: "open"})
+        const shadow = this.attachShadow({ mode: "open" })
         // this.loadContent();
         this.setupForm();
 
@@ -13,7 +13,7 @@ export class LoginComponent extends HTMLElement {
     }
 
 
-    #render(shadow){
+    #render(shadow) {
         shadow.innerHTML += `
         
         `
@@ -45,7 +45,11 @@ export class LoginComponent extends HTMLElement {
         });
     }
 
-    #agregarEstilo(shadow){
+    #agregarEstilo(shadow) {
+        let link = document.createElement("link"); // Crea un elemento link para cargar los estilos CSS.
+        link.setAttribute("rel", "stylesheet"); // Establece el atributo "rel" en "stylesheet".
+        link.setAttribute("href", "./loginComponent/login.css"); // Establece la ruta del archivo CSS.
+        shadow.appendChild(link); // Agrega el elemento link al Shadow DOM para cargar los estilos.
 
     }
 }
