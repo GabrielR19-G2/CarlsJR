@@ -1,24 +1,34 @@
-// login.js
-class LoginComponent extends HTMLElement {
+export class LoginComponent extends HTMLElement {
     constructor() {
         super();
     }
 
     connectedCallback() {
-        this.loadContent();
+        const shadow = this.attachShadow({mode: "open"})
+        // this.loadContent();
         this.setupForm();
+
+        this.#agregarEstilo(shadow);
+        this.#render(shadow);
     }
 
-    loadContent() {
-        fetch('microfrontends/login/login.html')
-            .then(response => response.text())
-            .then(html => {
-                this.innerHTML = html;
-            })
-            .catch(error => {
-                console.error('Error loading login content:', error);
-            });
+
+    #render(shadow){
+        shadow.innerHTML += `
+        
+        `
     }
+    //No se esta usando render.
+    // loadContent() {
+    //     fetch('microfrontends/login/login.html')
+    //         .then(response => response.text())
+    //         .then(html => {
+    //             this.innerHTML = html;
+    //         })
+    //         .catch(error => {
+    //             console.error('Error loading login content:', error);
+    //         });
+    // }
 
     setupForm() {
         const loginForm = this.querySelector('#loginForm');
@@ -33,6 +43,10 @@ class LoginComponent extends HTMLElement {
             console.log('Username:', username);
             console.log('Password:', password);
         });
+    }
+
+    #agregarEstilo(shadow){
+
     }
 }
 
