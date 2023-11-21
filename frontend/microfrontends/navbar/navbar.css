@@ -223,16 +223,14 @@ a:-webkit-any-link {
         position: fixed;
         background: var(--dark) !important;
     }
-}  
-.hero-header {
+}  .hero-header {
     background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .9)), url(../navbar/car_large.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 440px; /* Ajusta la altura según tus necesidades */
+    padding: 50px 0; /* Ajusta el relleno (padding) superior e inferior según tus necesidades */
 }
-
-
-
 
 .hero-header img {
     animation: imgRotate 50s linear infinite;
