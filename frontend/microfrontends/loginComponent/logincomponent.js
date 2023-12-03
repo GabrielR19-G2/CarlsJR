@@ -33,23 +33,41 @@ export class LoginComponent extends HTMLElement {
             </div>
         `;
     }
-    setupForm() {
-        const loginForm = this.shadowRoot.querySelector('#loginForm'); // Usa shadowRoot en lugar de this
+
+        setupForm() {
+            const loginForm = this.shadowRoot.querySelector('#loginForm');
     
-        if (loginForm) {
-            loginForm.addEventListener('submit', function (event) {
-                event.preventDefault();
+            if (loginForm) {
+                loginForm.addEventListener('submit', async function (event) {
+                    event.preventDefault();
     
-                const username = loginForm.querySelector('#username').value;
-                const password = loginForm.querySelector('#password').value;
+                    const username = loginForm.querySelector('#username').value;
+                    const password = loginForm.querySelector('#password').value;
     
-                // Add your login logic here
-                console.log('Username:', username);
-                console.log('Password:', password);
-            });
+                    // Realizar la solicitud de inicio de sesión al backend
+                    try {
+                        const response = await fetch('http://localhost:3000/api/login', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ usuario: username, contraseña: password }),
+                        });
+    
+                        if (!response.ok) {
+         
+                            console.error('Error de autenticación:', response.statusText);
+                            return;
+                        }
+    
+                        window.location.href = 'crud.html';
+                    } catch (error) {
+                        console.error('Error al realizar la solicitud:', error);
+                    }
+                });
+            }
         }
-    }
-    
+ 
     
 
     #agregarEstilo(shadow) {

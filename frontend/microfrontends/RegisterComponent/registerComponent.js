@@ -46,16 +46,35 @@ export class RegistroComponent extends HTMLElement {
         const registroForm = this.shadowRoot.querySelector('#registroForm');
     
         if (registroForm) {
-            registroForm.addEventListener('submit', function (event) {
+            registroForm.addEventListener('submit', async function (event) {
                 event.preventDefault();
     
                 const username = registroForm.querySelector('#username').value;
                 const password = registroForm.querySelector('#password').value;
     
-                console.log('Username:', username);
-                console.log('Password:', password);
+                try {
+                    const response = await fetch('http://localhost:3000/api/usuarios', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ usuario: username, contraseña: password }),
+                    });
     
-                return false;
+                    const data = await response.json();
+    
+                    if (response.ok) {
+                        console.log('Registro exitoso:', data);
+                        // Muestra un mensaje de éxito o redirige a otra página
+                        alert('¡Registro exitoso!');
+                    } else {
+                        console.error('Error en el registro:', data.error);
+                        // Muestra un mensaje de error al usuario
+                        alert('Error en el registro. Por favor, inténtalo de nuevo.');
+                    }
+                } catch (error) {
+                    console.error('Error en la solicitud:', error);
+                }
             });
         }
     }
@@ -65,7 +84,6 @@ export class RegistroComponent extends HTMLElement {
     #agregarEstilo(shadow) {
         let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
-        // Utiliza una ruta absoluta o relativa basada en la raíz del servidor
         link.setAttribute("href", "/frontend/microfrontends/RegisterComponent/register.css");
         shadow.appendChild(link);
     }
